@@ -13,8 +13,10 @@ function computerPlay() {
 }
 
 function playerSelection() {
-    // prompt player for choice and conver to upper case for case sensitivity
+    // prompt player for choice and convert to upper case for case sensitivity
     let choice = prompt("Select figure to throw ").toUpperCase();
+    // check if player entered a valid figure and repromt if not
+    // how does this handle reprompts btw?
     if (choice != "ROCK" && choice != "PAPER" && choice != "SCISSORS") {
         alert("Enter valid figure");
         playerSelection();
@@ -23,10 +25,13 @@ function playerSelection() {
 }
 
 function playRound(computerPlay, playerSelection) {
+    // here all score communicating is done via console.log() it would be cool to make a better system for communicating scores each round
+    // case: tie
     if (computerPlay.toUpperCase() === playerSelection) {
         console.log("Tie!");
         return "Tie!";
     }
+    // conditions for different cases
     else {
         if (computerPlay === "Rock") {
             if (playerSelection === "PAPER") {
@@ -63,6 +68,8 @@ function playRound(computerPlay, playerSelection) {
 }
 
 function game() {
+    // win variable counts games
+    // this counts ties and wins as equivalent, maybe this should be fixed???
     let win = Number(5);
     for (let i = 0; i < 5; i++) {
         if ((playRound(computerPlay(), playerSelection()).slice(4, 5) === "l")) {
@@ -78,4 +85,4 @@ function game() {
     }
 }
 console.log(game());
-//console.log(playRound(computerPlay(), playerSelection()));
+
