@@ -2,87 +2,82 @@ function computerPlay() {
     // Declare decider variable. If it is 0 - computer throws rock, 1 - paper, 2 - scissors
     let decider = Math.floor(Math.random()* 3);
     if (decider == 0) {
-        return "Rock";
+        return "ROCK";
     }
     else if (decider == 1) {
-        return "Paper";
+        return "PAPER";
     }
     else {
-        return "Scissors";
+        return "SCISSORS";
     }
 }
 
 function playerSelection() {
-    // prompt player for choice and convert to upper case for case sensitivity
-    let choice = prompt("Select figure to throw ").toUpperCase();
-    // check if player entered a valid figure and repromt if not
-    // how does this handle reprompts btw?
-    if (choice != "ROCK" && choice != "PAPER" && choice != "SCISSORS") {
-        alert("Enter valid figure");
-        playerSelection();
-    }
-    return choice;
+    const rock = document.querySelector("#rock");
+    rock.addEventListener('click', () => {
+        playRound(computerPlay(), "ROCK")
+    });
+
+    const paper = document.querySelector("#paper");
+    paper.addEventListener('click', () => {
+        choice = "PAPER"
+        playRound(computerPlay(), "PAPER")
+    });
+
+    const scissors = document.querySelector("#scissors");
+    scissors.addEventListener('click', () => {
+        choice = "SCISSORS"
+        playRound(computerPlay(), "SCISSORS")
+    });
 }
 
 function playRound(computerPlay, playerSelection) {
     // here all score communicating is done via console.log() it would be cool to make a better system for communicating scores each round
     // case: tie
-    if (computerPlay.toUpperCase() === playerSelection) {
+    if (computerPlay === playerSelection) {
         console.log("Tie!");
-        return "Tie!";
+        displayResults("Tie!");
     }
     // conditions for different cases
     else {
-        if (computerPlay === "Rock") {
+        if (computerPlay === "ROCK") {
             if (playerSelection === "PAPER") {
                 console.log("You win! Paper beats rock!");
-                return("You win! Paper beats rock!");
+                displayResults("You win! Paper beats rock!");
             }
             else if (playerSelection === "SCISSORS") {
                 console.log("You loose! Rock beats scissors");
-                return("You loose! Rock beats scissors");
+                displayResults("You loose! Rock beats scissors");
             }
         }
-        if (computerPlay === "Paper")
+        if (computerPlay === "PAPER")
         {
             if (playerSelection === "SCISSORS") {
                 console.log("You win! Scissors beat rock");
-                return("You win! Scissors beat rock");
+                displayResults("You win! Scissors beat rock");
             }
             else if (playerSelection === "ROCK") {
                 console.log("You loose! Paper beats rock");
-                return("You loose! Paper beats rock");
+                displayResults("You loose! Paper beats rock");
             }
         }
-        if (computerPlay === "Scissors") {
+        if (computerPlay === "SCISSORS") {
             if (playerSelection === "ROCK") {
                 console.log("You win! Rock beats scissors!");
-                return("You win! Rock beats scissors!");
+                displayResults("You win! Rock beats scissors!");
             }
             else if (playerSelection === "PAPER") {
                 console.log("You loose! Scissors beat paper!");
-                return("You loose! Scissors beat paper!");
+                displayResults("You loose! Scissors beat paper!");
             }
         }
     }
 }
+playerSelection()
 
-function game() {
-    // win variable counts games
-    // this counts ties and wins as equivalent, maybe this should be fixed???
-    let win = Number(5);
-    for (let i = 0; i < 5; i++) {
-        if ((playRound(computerPlay(), playerSelection()).slice(4, 5) === "l")) {
-            win--;
-        }
-        if (i === 4 && win < 3) {
-            console.log(win);
-            return(`You loose the game! You lost ${5 - win}/5 games!`);
-        }
-        else if (i === 4& win > 2) {
-            return(`You win the game! You won or tied ${win}/5 games!`);
-        }
-    }
+function displayResults(text) {
+    const results = document.querySelector(".results")
+    const p = document.createElement('p')
+    p.textContent = text
+    results.appendChild(p)
 }
-console.log(game());
-
