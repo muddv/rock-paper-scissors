@@ -1,1 +1,1 @@
-This is console-only implementation of rock paper scissors. Made as part of Odin Project curriculum.
+this is temporary repo for gui implementation
