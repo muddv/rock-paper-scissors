@@ -1,15 +1,47 @@
 body {
     display: flex;
+    flex-direction: column;
+}
+
+.buttons,  #resultText {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    color:red;
+}
+
+.wrapper {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.image-caption {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.results {
-    height: 500px;
+
+#playerScore {
+    color: green;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 100px;
 }
-.buttons {
-    margin-top: auto;
+#computerScore {
+    color: red;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
-    gap: 20px;
+    align-items: center;
+    margin-right: 100px;
 }

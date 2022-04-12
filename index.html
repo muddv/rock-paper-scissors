@@ -7,12 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="results"></div>
+    <div class="wrapper">
+        <p id="playerScore">0</p>
+        <p id="computerScore">0</p>             
+    </div>
+    <div class="container">
+        <div class="image-caption">
+            <img id="playerScore" src="images/player_tie.jpeg" alt="player face" width="300" height="300">
+            <figcaption id="playerScore" class="playerImage">player</figcaption> 
+        </div>
+        <div class="image-caption">
+            <img id="computerScore" class="computerImage" src="images/computer_tie.jpeg" alt="enemy face" width="300" height="300">
+            <figcaption id="computerScore">enemy</figcaption>
+        </div>    
+    </div>
     <div class="buttons">
         <button id="rock">rock</button>
         <button id="paper">paper</button>
         <button id="scissors">scissors</button>
     </div>
-    <div clas="results"></div>
+    <p id="resultText"></p>
 </body>
 </html>
