@@ -1,1 +1,1 @@
-this is temporary repo for gui implementation
+Rock paper scissors. Made as part of Odin Project curriculum.
